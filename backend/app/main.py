@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .config import settings
 from .utils.exceptions import ResearchGuardException, custom_exception_handler, global_exception_handler
-from .api import health, documents, retrieval, query
+from .api import health, documents, retrieval, query, experiments
 
 # Configure logging
 logging.basicConfig(
@@ -42,6 +42,7 @@ app.include_router(health.router, prefix="/api")
 app.include_router(documents.router, prefix="/api")
 app.include_router(retrieval.router, prefix="/api")
 app.include_router(query.router, prefix="/api")
+app.include_router(experiments.router, prefix="/api")
 
 @app.get("/")
 async def root():

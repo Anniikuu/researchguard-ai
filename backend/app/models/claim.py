@@ -23,7 +23,7 @@ class Claim(Base):
     claim_length = Column(Integer, nullable=True)
     evidence_length = Column(Integer, nullable=True)
     
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    created_at = Column(DateTime, default=datetime.now)
 
     answer = relationship("Answer", back_populates="claims")
     evidence = relationship("ClaimEvidence", back_populates="claim", cascade="all, delete-orphan")
@@ -39,7 +39,7 @@ class ClaimEvidence(Base):
     page_number = Column(Integer, nullable=False)
     similarity_score = Column(Float, nullable=False)
     rank = Column(Integer, nullable=False)
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    created_at = Column(DateTime, default=datetime.now)
     
     claim = relationship("Claim", back_populates="evidence")
     chunk = relationship("DocumentChunk", back_populates="evidence")

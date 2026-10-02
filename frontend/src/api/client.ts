@@ -57,7 +57,13 @@ export interface Claim {
   claim_index: number;
   claim_text: string;
   verification_status: string;
+  confidence_score?: number;
+  verification_method?: string;
   cosine_similarity?: number;
+  tfidf_similarity?: number;
+  keyword_overlap?: number;
+  claim_length?: number;
+  evidence_length?: number;
   evidence: ClaimEvidence[];
 }
 
@@ -72,9 +78,66 @@ export interface QueryResponse {
   method: string;
 }
 
+export interface MetricDetail {
+  mean: number;
+  std: number;
+}
+
+export interface ModelMetrics {
+  accuracy: MetricDetail;
+  precision: MetricDetail;
+  recall: MetricDetail;
+  f1: MetricDetail;
+  roc_auc: MetricDetail;
+}
+
+export interface SciFactFold {
+  fold: number;
+  train_size: number;
+  val_size: number;
+  baseline: {
+    accuracy: number;
+    precision: number;
+    recall: number;
+    f1: number;
+    roc_auc: number;
+  };
+  logistic_regression: {
+    accuracy: number;
+    precision: number;
+    recall: number;
+    f1: number;
+    roc_auc: number;
+  };
+}
+
+export interface SciFactExperimentResults {
+  experiment: string;
+  research_question: string;
+  dataset_metadata: {
+    total_instances: number;
+    support_count: number;
+    contradict_count: number;
+    support_pct: number;
+    contradict_pct: number;
+    unique_claims: number;
+    unique_docs: number;
+  };
+  features: string[];
+  cv_folds: SciFactFold[];
+  aggregate_results: {
+    baseline_cosine_threshold: ModelMetrics;
+    proposed_logistic_regression: ModelMetrics;
+  };
+}
 
 export const queryDocuments = async (data: QueryRequest): Promise<QueryResponse> => {
   const response = await apiClient.post<QueryResponse>('/query', data);
+  return response.data;
+};
+
+export const getSciFactExperimentResults = async (): Promise<SciFactExperimentResults> => {
+  const response = await apiClient.get<SciFactExperimentResults>('/experiments/scifact');
   return response.data;
 };
 

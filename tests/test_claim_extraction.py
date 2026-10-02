@@ -98,7 +98,7 @@ async def test_claim_evidence_pipeline_and_db_persistence(db_session):
 
         assert len(results) == 2
         assert results[0]["claim_text"] == mock_claims[0]
-        assert results[0]["verification_status"] == "UNVERIFIED"
+        assert results[0]["verification_status"] in ["SUPPORT", "CONTRADICT"]
         assert len(results[0]["evidence"]) == 1
         assert results[0]["evidence"][0]["page_number"] == 4
         assert results[0]["evidence"][0]["similarity_score"] == 0.9412

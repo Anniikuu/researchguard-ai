@@ -29,7 +29,13 @@ class ClaimSchema(BaseModel):
     claim_index: int
     claim_text: str
     verification_status: str = "UNVERIFIED"
+    confidence_score: Optional[float] = None
+    verification_method: Optional[str] = None
     cosine_similarity: Optional[float] = None
+    tfidf_similarity: Optional[float] = None
+    keyword_overlap: Optional[float] = None
+    claim_length: Optional[int] = None
+    evidence_length: Optional[int] = None
     evidence: List[ClaimEvidenceSchema] = Field(default_factory=list)
 
 class QueryResponse(BaseModel):
