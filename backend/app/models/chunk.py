@@ -1,9 +1,8 @@
 import uuid
-from datetime import datetime, timezone
-from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Text
-from sqlalchemy.dialects.postgresql import UUID
+from datetime import datetime
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Text, Float
+from sqlalchemy.dialects.postgresql import UUID, ARRAY
 from sqlalchemy.orm import relationship
-from pgvector.sqlalchemy import Vector
 from ..database import Base
 
 class DocumentChunk(Base):
@@ -14,9 +13,9 @@ class DocumentChunk(Base):
     chunk_index = Column(Integer, nullable=False)
     page_number = Column(Integer, nullable=False)
     content = Column(Text, nullable=False)
-    embedding = Column(Vector(384)) # 384 for BAAI/bge-small-en-v1.5
+    embedding = Column(ARRAY(Float), nullable=True)  # 384 dimensions for BAAI/bge-small-en-v1.5
     token_count = Column(Integer, nullable=False, default=0)
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    created_at = Column(DateTime, default=datetime.now)
 
     document = relationship("Document", back_populates="chunks")
     evidence = relationship("ClaimEvidence", back_populates="chunk", cascade="all, delete-orphan")

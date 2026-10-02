@@ -9,3 +9,6 @@ pgvector
 pytest
 pytest-asyncio
 httpx
+pymupdf
+sentence-transformers
+python-multipart

@@ -1,0 +1,303 @@
+{
+  "experiment": "Phase 5 Controlled Research Experiment: Cosine Baseline vs Logistic Regression",
+  "research_question": "Can supervised Logistic Regression improve evidence-based claim verification compared with cosine similarity alone?",
+  "dataset_metadata": {
+    "total_instances": 1295,
+    "support_count": 832,
+    "contradict_count": 463,
+    "support_pct": 64.25,
+    "contradict_pct": 35.75,
+    "unique_claims": 693,
+    "unique_docs": 437,
+    "connected_components": 388
+  },
+  "features": [
+    "cosine_similarity",
+    "tfidf_similarity",
+    "keyword_overlap_ratio",
+    "claim_length",
+    "evidence_length"
+  ],
+  "cv_folds": [
+    {
+      "fold": 1,
+      "train_size": 1039,
+      "val_size": 256,
+      "train_support": 667,
+      "train_contradict": 372,
+      "val_support": 165,
+      "val_contradict": 91,
+      "train_groups": 312,
+      "val_groups": 76,
+      "baseline": {
+        "accuracy": 0.6523,
+        "precision": 0.6496,
+        "recall": 1.0,
+        "f1": 0.7876,
+        "roc_auc": 0.7067,
+        "confusion_matrix": [
+          [
+            2,
+            89
+          ],
+          [
+            0,
+            165
+          ]
+        ],
+        "selected_threshold": 0.55
+      },
+      "logistic_regression": {
+        "accuracy": 0.668,
+        "precision": 0.7632,
+        "recall": 0.703,
+        "f1": 0.7319,
+        "roc_auc": 0.6846,
+        "confusion_matrix": [
+          [
+            55,
+            36
+          ],
+          [
+            49,
+            116
+          ]
+        ]
+      }
+    },
+    {
+      "fold": 2,
+      "train_size": 1033,
+      "val_size": 262,
+      "train_support": 665,
+      "train_contradict": 368,
+      "val_support": 167,
+      "val_contradict": 95,
+      "train_groups": 305,
+      "val_groups": 83,
+      "baseline": {
+        "accuracy": 0.6374,
+        "precision": 0.6406,
+        "recall": 0.982,
+        "f1": 0.7754,
+        "roc_auc": 0.5527,
+        "confusion_matrix": [
+          [
+            3,
+            92
+          ],
+          [
+            3,
+            164
+          ]
+        ],
+        "selected_threshold": 0.5700000000000001
+      },
+      "logistic_regression": {
+        "accuracy": 0.5725,
+        "precision": 0.659,
+        "recall": 0.6826,
+        "f1": 0.6706,
+        "roc_auc": 0.5606,
+        "confusion_matrix": [
+          [
+            36,
+            59
+          ],
+          [
+            53,
+            114
+          ]
+        ]
+      }
+    },
+    {
+      "fold": 3,
+      "train_size": 1035,
+      "val_size": 260,
+      "train_support": 665,
+      "train_contradict": 370,
+      "val_support": 167,
+      "val_contradict": 93,
+      "train_groups": 317,
+      "val_groups": 71,
+      "baseline": {
+        "accuracy": 0.6462,
+        "precision": 0.6448,
+        "recall": 1.0,
+        "f1": 0.784,
+        "roc_auc": 0.5747,
+        "confusion_matrix": [
+          [
+            1,
+            92
+          ],
+          [
+            0,
+            167
+          ]
+        ],
+        "selected_threshold": 0.55
+      },
+      "logistic_regression": {
+        "accuracy": 0.5577,
+        "precision": 0.694,
+        "recall": 0.5569,
+        "f1": 0.6179,
+        "roc_auc": 0.5752,
+        "confusion_matrix": [
+          [
+            52,
+            41
+          ],
+          [
+            74,
+            93
+          ]
+        ]
+      }
+    },
+    {
+      "fold": 4,
+      "train_size": 1039,
+      "val_size": 256,
+      "train_support": 666,
+      "train_contradict": 373,
+      "val_support": 166,
+      "val_contradict": 90,
+      "train_groups": 305,
+      "val_groups": 83,
+      "baseline": {
+        "accuracy": 0.6484,
+        "precision": 0.6545,
+        "recall": 0.9699,
+        "f1": 0.7816,
+        "roc_auc": 0.5556,
+        "confusion_matrix": [
+          [
+            5,
+            85
+          ],
+          [
+            5,
+            161
+          ]
+        ],
+        "selected_threshold": 0.59
+      },
+      "logistic_regression": {
+        "accuracy": 0.5625,
+        "precision": 0.6776,
+        "recall": 0.6205,
+        "f1": 0.6478,
+        "roc_auc": 0.5891,
+        "confusion_matrix": [
+          [
+            41,
+            49
+          ],
+          [
+            63,
+            103
+          ]
+        ]
+      }
+    },
+    {
+      "fold": 5,
+      "train_size": 1034,
+      "val_size": 261,
+      "train_support": 665,
+      "train_contradict": 369,
+      "val_support": 167,
+      "val_contradict": 94,
+      "train_groups": 313,
+      "val_groups": 75,
+      "baseline": {
+        "accuracy": 0.6437,
+        "precision": 0.6445,
+        "recall": 0.988,
+        "f1": 0.7801,
+        "roc_auc": 0.5828,
+        "confusion_matrix": [
+          [
+            3,
+            91
+          ],
+          [
+            2,
+            165
+          ]
+        ],
+        "selected_threshold": 0.59
+      },
+      "logistic_regression": {
+        "accuracy": 0.5211,
+        "precision": 0.6522,
+        "recall": 0.5389,
+        "f1": 0.5902,
+        "roc_auc": 0.5645,
+        "confusion_matrix": [
+          [
+            46,
+            48
+          ],
+          [
+            77,
+            90
+          ]
+        ]
+      }
+    }
+  ],
+  "aggregate_results": {
+    "baseline_cosine_threshold": {
+      "accuracy": {
+        "mean": 0.6456,
+        "std": 0.005
+      },
+      "precision": {
+        "mean": 0.6468,
+        "std": 0.0048
+      },
+      "recall": {
+        "mean": 0.988,
+        "std": 0.0114
+      },
+      "f1": {
+        "mean": 0.7817,
+        "std": 0.0041
+      },
+      "roc_auc": {
+        "mean": 0.5945,
+        "std": 0.0572
+      }
+    },
+    "proposed_logistic_regression": {
+      "accuracy": {
+        "mean": 0.5764,
+        "std": 0.049
+      },
+      "precision": {
+        "mean": 0.6892,
+        "std": 0.0398
+      },
+      "recall": {
+        "mean": 0.6204,
+        "std": 0.0654
+      },
+      "f1": {
+        "mean": 0.6517,
+        "std": 0.0484
+      },
+      "roc_auc": {
+        "mean": 0.5948,
+        "std": 0.046
+      }
+    }
+  },
+  "artifacts": {
+    "model_path": "data/experiments\\logistic_regression_scifact.joblib",
+    "results_path": "data/experiments\\phase5_scifact_experiment_results.json"
+  }
+}
